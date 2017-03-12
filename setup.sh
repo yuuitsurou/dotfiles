@@ -8,7 +8,7 @@ DVLP_DIR="${HOME}/dvlp"
 DOCS_DIR="${HOME}/docs"
 TMP_DIR="${HOME}/tmp"
 # vim
-VIM_DIR="${HOME}/.vim.d/bkup"
+VIM_DIR="${HOME}/.vim.d"
 # emacs
 EMACS_SRC_DIR="${DOT_DIRECTORY}/emacs"
 EMACS_DIR="${HOME}/.emacs.d"
@@ -128,7 +128,9 @@ initialize() {
 		mkdir ${TMP_DIR}
 	fi
 	if [ ! -d ${VIM_DIR} ]; then
-		mkdir -p ${VIM_DIR}
+		mkdir -p ${VIM_DIR}/bkup
+		mkdir -p ${VIM_DIR}/dein/repos/github.com/Shougo/dein.vim
+		git clone https://github.com/Shougo/dein.vim ${VIM_DIR}/dein/repos/github.com/Shougo/dein.vim
 	fi
 	if [ ! -d ${EMACS_DIR} ]; then
 		mkdir -p ${EMACS_DIR}/${EMACS_ELGET_INIT_DIR}

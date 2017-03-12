@@ -85,10 +85,10 @@ link_files() {
 	cd ${EMACS_SRC_DIR}
 	for f in *.*
 	do
-	if [ ! -e ${HOME}/${EMACS_DIR}/${f} ]; then
+	if [ ! -e ${EMACS_DIR}/${f} ]; then
 	  # If you have ignore files, add file/directory name here
 		[[ ${f} = "init.d" ]] && continue
-		ln -snfv ${EMACS_SRC_DIR}/${f} ${HOME}/${EMACS_DIR}/${f}
+		ln -snfv ${EMACS_SRC_DIR}/${f} ${EMACS_DIR}/${f}
 	fi
 	done
 

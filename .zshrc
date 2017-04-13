@@ -56,6 +56,7 @@ setopt share_history
 autoload -Uz compinit
 compinit
 
+zstyle ':completeion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completeion:*' group-name ''
 zstyle ':completion:*:default' menu select=2
@@ -64,16 +65,16 @@ zstyle ':completion:*' use-cache yes
 zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
 
 setopt complete_in_word
-
+# 日本語を表示可能に
 setopt print_eight_bit
-
+# Ctrl + D で zsh を終了しない
 setopt ignore_eof
-
+# '#' 以降をコメントとして扱う
 setopt interactive_comments
 
 setopt complete_aliases
 
-alias ll='ls -al'
+alias ll='ls --color=auto -al'
 
 setopt auto_param_slash
 

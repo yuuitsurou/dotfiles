@@ -49,6 +49,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_all_dups
+setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt share_history
 
@@ -63,6 +64,7 @@ zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+zstyle ':completion:*' ignore-parents parent pwd ..
 
 setopt complete_in_word
 # 日本語を表示可能に
@@ -85,4 +87,6 @@ setopt list_types
 setopt auto_menu
 
 setopt auto_param_keys
+
+setopt no_flow_control
 

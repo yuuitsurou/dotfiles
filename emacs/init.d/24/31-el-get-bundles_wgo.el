@@ -6,6 +6,7 @@
 ;(el-get-bundle color-moccur)
 (el-get-bundle elscreen)
 (el-get-bundle migemo)
+(el-get-bundle emacs-async)
 (el-get-bundle helm)
 (el-get-bundle helm-descbinds)
 ;(el-get-bundle helm-migemo)

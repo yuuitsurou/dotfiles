@@ -12,7 +12,7 @@ VIM_DIR="${HOME}/.vim.d"
 # emacs
 EMACS_SRC_DIR="${DOT_DIRECTORY}/emacs"
 EMACS_DIR="${HOME}/.emacs.d"
-EMACS_INIT_DIR="init.d/24/"
+EMACS_INIT_DIR="init.d/24"
 EMACS_ELGET_INIT_DIR="${EMACS_INIT_DIR}/init"
 EMACS_BKUP_DIR="bkup"
 EMACS_AUTOSAVE_DIR="autosave"

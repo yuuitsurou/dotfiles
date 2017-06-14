@@ -1,8 +1,6 @@
 (setq skk-server-host "localhost"
 	  skk-server-portnum 1178
 	  skk-server-report-response nil)
-(add-to-list 'skk-search-prog-list
-	     '(skk-server-completion-search) t)
 (when (require 'skk nil t)
   (global-set-key "\C-\\" 'skk-mode))
 ;; 変換開始のキーを ; に

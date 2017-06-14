@@ -1,6 +1,11 @@
 (setq skk-server-host "localhost"
 	  skk-server-portnum 1178
 	  skk-server-report-response nil)
+(setq skk-large-jisyo nil)
+(add-to-list 'skk-search-prog-list
+	     '(skk-server-completion-search) t)
+(add-to-list 'skk-search-prog-list
+	     '(skk-comp-by-server-completion) t)
 (when (require 'skk nil t)
   (global-set-key "\C-\\" 'skk-mode))
 ;; 変換開始のキーを ; に
@@ -65,3 +70,8 @@
 
 ;; 単語登録／単語削除のたびに個人辞書を保存する
 (setq skk-save-jisyo-instantly t)
+
+(add-hook 'skk-search-excluding-word-pattern-function
+ 	  #'(lambda (kakutei-word)
+ 	      (eq (aref skk-henkan-key (1- (length skk-henkan-key)))
+ 		  skk-server-completion-search-char)))

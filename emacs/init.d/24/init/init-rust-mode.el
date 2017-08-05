@@ -5,6 +5,6 @@
 (eval-after-load "rust-mode"
   '(setq-default rust-format-on-save t))
 
-(add-hook 'rust-mode-hoo (lambda ()
+(add-hook 'rust-mode-hook (lambda ()
 			   (racer-mode)
 			   (flycheck-rust-setup)))

@@ -2,7 +2,7 @@
 set -e
 DOT_DIRECTORY="${HOME}/dotfiles"
 DOT_TARBALL="https://github.com/yuuitsurou/dotfiles/tarball/master"
-REMOTE_URL="git@github.com:yuuitsurou/dotfiles.git"
+REMOTE_URL="https://github.com:yuuitsurou/dotfiles.git"
 BIN_DIR="${HOME}/bin"
 DVLP_DIR="${HOME}/dvlp"
 DOCS_DIR="${HOME}/docs"

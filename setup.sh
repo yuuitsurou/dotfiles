@@ -93,7 +93,7 @@ link_files() {
 	done
 
 	cd ${EMACS_SRC_DIR}/${EMACS_INIT_DIR}
-	for f in *.*
+	for f in *
 	do
 	if [ ! -e ${EMACS_DIR}/${EMACS_INIT_DIR}/${f} ]; then
 	  # If you have ignore files, add file/directory name here

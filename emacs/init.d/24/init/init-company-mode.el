@@ -17,3 +17,4 @@
 
 (define-key emacs-lisp-mode-map (kbd "M-\\") 'company-complete)
 (company-quickhelp-mode +1)
+(setq company-dabbrev-downcase nil)

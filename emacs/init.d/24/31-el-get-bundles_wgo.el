@@ -12,7 +12,7 @@
 ;(el-get-bundle helm-migemo)
 (el-get-bundle helm-swoop)
 (el-get-bundle helm-ag)
-(el-get-bundle org)
+;(el-get-bundle org :url "https://orgmode.org/elpa/")
 (el-get-bundle popup-kill-ring)
 (el-get-bundle color-theme-zenburn)
 ;(el-get-bundle howm)

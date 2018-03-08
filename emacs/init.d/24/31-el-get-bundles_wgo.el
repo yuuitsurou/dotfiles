@@ -18,7 +18,7 @@
 ;(el-get-bundle howm)
 ;(el-get-bundle moccur-edit)
 ;(el-get-bundle visual-basic-mode)
-(el-get-bundle point-undo)
+(el-get-bundle point-undo :url "https://www.emacswiki.org/emacs/download/point-undo.el")
 (el-get-bundle markdown-mode)
 (el-get-bundle company-mode)
 (el-get-bundle company-quickhelp)

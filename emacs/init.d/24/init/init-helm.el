@@ -31,6 +31,7 @@
 (define-key helm-command-map (kbd "d")   'helm-descbinds)
 (define-key helm-command-map (kbd "b")   'helm-buffers-list)
 (define-key helm-command-map (kbd "i")   'helm-imenu)
+(define-key helm-command-map (kbd "C-i") 'helm-semantic-or-imenu)
 ;; Emulate `kill-line' in helm minibuffer
 (setq helm-delete-minibuffer-contents-from-point t)
 (defadvice helm-delete-minibuffer-contents (before helm-emulate-kill-line activate)

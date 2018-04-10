@@ -43,3 +43,5 @@
   (let ((helm-delete-minibuffer-contents-from-point nil))
     ad-do-it))
 
+(setq helm-surfraw-default-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")

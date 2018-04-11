@@ -11,7 +11,10 @@
 ;; 自動補完を無効にする
 (setq helm-ff-auto-update-initial-value nil)
 ;; TAB で補完する
-(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-z") 'helm-select-action)
+;;(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
 ;; key setteings
 ;(global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "M-x") 'helm-M-x)

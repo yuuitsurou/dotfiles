@@ -14,7 +14,12 @@
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-]") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-:") 'helm-select-action)
-;(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+;;(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+;;(define-key helm-find-files-map (kb "<tab>") 'helm-execute-persistent-action)
+
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
+
 ;; key setteings
 ;(global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "M-x") 'helm-M-x)

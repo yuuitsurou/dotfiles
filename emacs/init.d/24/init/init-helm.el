@@ -15,7 +15,7 @@
 (define-key helm-map (kbd "C-]") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-:") 'helm-select-action)
 ;;(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
-;;(define-key helm-find-files-map (kb "<tab>") 'helm-execute-persistent-action)
+;;(define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action)
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
@@ -41,7 +41,7 @@
 (define-key helm-command-map (kbd "d")   'helm-descbinds)
 (define-key helm-command-map (kbd "b")   'helm-buffers-list)
 (define-key helm-command-map (kbd "i")   'helm-imenu)
-(define-key helm-command-map (kbd "C-i") 'helm-semantic-or-imenu)
+(define-key helm-command-map (kbd "M") 'helm-semantic-or-imenu)
 
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))

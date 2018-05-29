@@ -3,7 +3,7 @@
 ;;; setting file
 ;;; init.el
 ;;; 
-;;;   Time-stamp: <2018-01-25 08:37:05 ymine>
+;;;   Time-stamp: <2018-05-29 20:12:46 ymine>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,9 +61,7 @@
   (setq my-load-dir "~/.emacs.d/init.d/24"))
 (when (and run-unix run-emacs23)
   (setq my-load-dir "~/.emacs.d/init.d/23"))
-(when (and run-unix run-emacs24)
-  (setq my-load-dir "~/.emacs.d/init.d/24"))
-(when (and run-unix run-emacs25)
+(when (and run-unix (>= emacs-major-version 24))
   (setq my-load-dir "~/.emacs.d/init.d/24"))
 (when (and run-cygwin run-emacs24)
   (setq my-load-dir "/home/ymine/.emacs.d/init.d/cygwin24"))

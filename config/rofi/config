@@ -1,0 +1,19 @@
+! -*- mode:conf-xdefaults; coding: utf-8 -*-
+!! Rofi
+rofi.modi: run,window,drun,ssh
+rofi.combi-modi: window,drun
+rofi.lines: 12
+rofi.font: Noto Sans 11
+rofi.bw: 2
+rofi.location: 0
+rofi.padding: 15
+rofi.sidebar-mode: true
+rofi.hide-scrollbar: true
+rofi.fixed-num-lines: true
+rofi.kb-row-up: Up,Control+p,Shift+Tab
+rofi.kb-row-down: Down,Control+n
+rofi.kb-cancel: Escape,Control+g,Control+bracketleft,Control+c
+rofi.kb-mode-next: Shift+Right,Control+i,Control+Tab
+rofi.kb-mode-previous: Shift+Left,Control+Shift+i
+rofi.color-enabled: true
+rofi.theme: /usr/share/rofi/themes/solarized_alternate.rasi

@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --bg-max --no-fehbg '/home/ymine/Pictures/Madonna_cestello_EUR.jpg' 

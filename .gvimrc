@@ -56,7 +56,9 @@ endif
   " set guifont=‚l‚r_ƒSƒVƒbƒN:h11:cSHIFTJIS
   "	set guifont=KonatuTohaba:h11:cSHIFTJIS
   "	set guifont=VL_ƒSƒVƒbƒN:h11:cSHIFTJIS
-  	set guifont=DejaVu\ Sans\ Mono\ 12
+  "	set guifont=DejaVu\ Sans\ Mono\ 12
+  "	set guifont=UmePlus\ Gothic\ Regular\ 10
+  	set guifont=Monospace\ Regular\ 10
   " sŠÔŠu‚Ìİ’è
   set linespace=2
 "elseif has('xfontset')

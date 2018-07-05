@@ -36,4 +36,5 @@
 ;(el-get-bundle rust-mode)
 (el-get-bundle tarao/el-get-lock)
 ;(el-get-bundle fsharp-mode)
+(el-get-bundle magit)
 (el-get-lock)

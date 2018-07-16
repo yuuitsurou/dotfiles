@@ -118,6 +118,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+for_window [class="Pamac-manager"] floating enable
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -162,14 +164,14 @@ bindsym $Alt+F2 exec --no-startup-id sh -c "rofi -show drun"
 bindsym $Alt+F3 exec --no-startup-id sh -c "rofi -show run"
 # bar toggle, hideor show
 #bindsym $mod+m bar mode toggle
-
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s off
 exec --no-startup-id VBoxClient-all
 exec --no-startup-id "sh $HOME/.fehbg"
 #exec --no-startup-id compton -cbm 0.85
 exec --no-startup-id compton --config /home/ymine/.config/compton.conf -b
-exec --no-startup-id xset r rate 200 50
+exec --no-startup-id xset r rate 250 50
 exec --no-startup-id conky -d
 exec --no-startup-id ibus-daemon -drx
 #exec --no-startup-id xfce4-panel --disable-wm-check

@@ -77,6 +77,7 @@ setopt interactive_comments
 setopt complete_aliases
 
 alias ll='ls --color=auto -al'
+alias vi='vim'
 
 setopt auto_param_slash
 

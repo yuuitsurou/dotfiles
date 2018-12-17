@@ -30,7 +30,7 @@
 ;(el-get-bundle! company-go :url "https://raw.githubusercontent.com/nsf/gocode/master/emacs-company/company-go.el")
 ;(el-get-bundle f)
 ;(el-get-bundle s)
-;(el-get-bundle flycheck)
+(el-get-bundle flycheck)
 ;(el-get-bundle flycheck-rust)
 ;(el-get-bundle emacs-racer)
 ;(el-get-bundle rust-mode)

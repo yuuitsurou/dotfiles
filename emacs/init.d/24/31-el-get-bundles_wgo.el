@@ -22,6 +22,7 @@
 (el-get-bundle markdown-mode)
 (el-get-bundle company-mode)
 (el-get-bundle company-quickhelp)
+(el-get-bundle undo-tree)
 (el-get-bundle goto-chg)
 (el-get-bundle google-translate)
 (el-get-bundle bm)

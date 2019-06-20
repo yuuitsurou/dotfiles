@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; atom-one-dark  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'atom-one-dark-theme)
-(load-theme 'atom-one-dark t)
+(straight-use-package 'zerodark-theme)
+(load-theme 'zerodark t)

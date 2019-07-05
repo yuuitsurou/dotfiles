@@ -28,4 +28,15 @@
              "* %?\n %U\n %i\n %a")
         ("n" "Note" entry (file+headline "~/org/notes.org" "Notes")
              "* %?\n %U\n %i\n %a")
-         ))
+	))
+
+(defun show-org-buffer (file)
+  "Show an org-file FILE on the current buffer."
+  (interactive)
+  (if (get-buffer file)
+      (let ((buffer (get-buffer file)))
+        (switch-to-buffer buffer)
+        (message "%s" file))
+    (find-file (concat "~/org/" file))))
+(global-set-key (kbd "C-M-^") '(lambda () (interactive)
+                                 (show-org-buffer "notes.org")))

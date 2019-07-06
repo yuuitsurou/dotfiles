@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smart-mode-line
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'smart-mode-line)
+(use-package smart-mode-line)
 (defvar sml/no-confirm-load-theme t)
 (defvar sml/theme 'dark)
 ;(defvar sml/theme 'respectful)

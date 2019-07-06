@@ -14,6 +14,7 @@ EMACS_SRC_DIR="${DOT_DIRECTORY}/emacs"
 EMACS_DIR="${HOME}/.emacs.d"
 EMACS_INIT_DIR="init.d/24"
 EMACS_ELGET_INIT_DIR="${EMACS_INIT_DIR}/init"
+EMACS_INITL_DIR="${EMACS_INIT_DIR}/initl"
 EMACS_BKUP_DIR="bkup"
 EMACS_AUTOSAVE_DIR="autosave"
 EMACS_AUTOSAVE_LIST_DIR="auto-save-list"
@@ -110,6 +111,15 @@ link_files() {
 	fi
 	done
 
+	cd ${EMACS_SRC_DIR}/${EMACS_INITL_DIR}
+	for f in *.*
+	do
+	if [ ! -e ${EMACS_DIR}/${EMACS_INITL_DIR}/${f} ]; then
+	  # If you have ignore files, add file/directory name here
+		ln -snfv ${EMACS_SRC_DIR}/${EMACS_INITL_DIR}/${f} ${EMACS_DIR}/${EMACS_INITL_DIR}/${f}
+	fi
+	done
+
 	echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
 }
 
@@ -134,6 +144,7 @@ initialize() {
 	fi
 	if [ ! -d ${EMACS_DIR} ]; then
 		mkdir -p ${EMACS_DIR}/${EMACS_ELGET_INIT_DIR}
+		mkdir -p ${EMACS_DIR}/${EMACS_INITL_DIR}
 		mkdir -p ${EMACS_DIR}/${EMACS_BKUP_DIR}
 		mkdir -p ${EMACS_DIR}/${EMACS_AUTOSAVE_DIR}
 		mkdir -p ${EMACS_DIR}/${EMACS_AUTOSAVE_LIST_DIR}

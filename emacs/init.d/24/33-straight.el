@@ -15,3 +15,12 @@
 ;; オプションなしで自動的にuse-packageをstraight.elにフォールバックする
 ;; 本来は (use-package hoge :straight t) のように書く必要がある
 (setq straight-use-package-by-default t)
+
+;; init-loader
+(use-package init-loader)
+;;; ログはエラーが出た時のみ
+(custom-set-variables
+ '(init-loader-show-log-after-init 'error-only))
+
+;; ~/.emacs.d/init配下のelファイルをすべてロードする
+(init-loader-load "~/.emacs.d/init.d/24/initl")

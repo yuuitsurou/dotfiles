@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm swoop
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'helm-swoop)
+(use-package helm-swoop)
 (require 'helm-swoop)
 (helm-migemo-mode 1)
 ;; キーバインドはお好みで

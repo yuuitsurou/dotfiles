@@ -40,3 +40,5 @@
     (find-file (concat "~/org/" file))))
 (global-set-key (kbd "C-M-^") '(lambda () (interactive)
                                  (show-org-buffer "notes.org")))
+
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))

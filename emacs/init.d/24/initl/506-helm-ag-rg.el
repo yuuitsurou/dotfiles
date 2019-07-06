@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm-ag
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'helm-ag)
+(use-package helm-ag)
 (require 'helm-ag)
 (setq helm-ag-base-command "rg --no-heading --line-number --color never")
 ;; 現在のシンボルをデフォルトのクエリにする

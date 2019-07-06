@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'helm-descbinds)
-(require 'helm-descbinds)
+(use-package helm-descbinds)
+;x(require 'helm-descbinds)
 

@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; company 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'company)
-(straight-use-package 'company-quickhelp)
+(use-package company)
+(use-package company-quickhelp)
 (require 'company)
 (global-company-mode +1)
 (custom-set-variables

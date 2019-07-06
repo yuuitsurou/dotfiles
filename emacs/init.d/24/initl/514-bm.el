@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bm
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(straight-use-package 'bm)
+(use-package bm)
 (setq-default bm-buffer-persistence nil)
 (setq bm-restore-repository-on-load t)
 (require 'bm)

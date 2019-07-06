@@ -1,6 +1,4 @@
-(unless (locate-library "skk")
-  (straight-use-package 'ddskk))
-(use-package ddskk)
+(straight-use-package 'ddskk)
 (setq skk-server-host "localhost"
 	  skk-server-portnum 1178
 	  skk-server-report-response nil)

@@ -144,7 +144,6 @@ initialize() {
 	fi
 	if [ ! -d ${EMACS_DIR} ]; then
 		mkdir -p ${EMACS_DIR}/${EMACS_ELGET_INIT_DIR}
-		mkdir -p ${EMACS_DIR}/${EMACS_INITL_DIR}
 		mkdir -p ${EMACS_DIR}/${EMACS_BKUP_DIR}
 		mkdir -p ${EMACS_DIR}/${EMACS_AUTOSAVE_DIR}
 		mkdir -p ${EMACS_DIR}/${EMACS_AUTOSAVE_LIST_DIR}

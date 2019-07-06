@@ -3,7 +3,7 @@
 ;;; setting file
 ;;; init.el
 ;;; 
-;;;   Time-stamp: <2019-07-06 15:23:06 ymine>
+;;;   Time-stamp: <2019-07-07 07:49:37 ymine>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -15,7 +15,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;(package-initialize)
 
 (defvar run-unix
   (or (equal system-type 'gnu/linux)

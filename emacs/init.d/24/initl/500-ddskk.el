@@ -1,4 +1,4 @@
-(use-package ddskk)
+(use-package ddskk :ensure)
 (setq skk-server-host "localhost"
 	  skk-server-portnum 1178
 	  skk-server-report-response nil)

@@ -58,7 +58,7 @@ endif
   "	set guifont=VL_ゴシック:h11:cSHIFTJIS
   "	set guifont=DejaVu\ Sans\ Mono\ 12
   "	set guifont=UmePlus\ Gothic\ Regular\ 10
-  	set guifont=Monospace\ Regular\ 10
+  	set guifont=Monospace\ Regular\ 11
   " 行間隔の設定
   set linespace=2
 "elseif has('xfontset')

@@ -111,15 +111,6 @@ link_files() {
 	fi
 	done
 
-	cd ${EMACS_SRC_DIR}/${EMACS_INITL_DIR}
-	for f in *.*
-	do
-	if [ ! -e ${EMACS_DIR}/${EMACS_INITL_DIR}/${f} ]; then
-	  # If you have ignore files, add file/directory name here
-		ln -snfv ${EMACS_SRC_DIR}/${EMACS_INITL_DIR}/${f} ${EMACS_DIR}/${EMACS_INITL_DIR}/${f}
-	fi
-	done
-
 	echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
 }
 

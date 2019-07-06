@@ -14,6 +14,9 @@
 (setq skk-show-japanese-menu t)		; メニューを日本語に
 ;; 確定のアンドゥ
 (define-key skk-j-mode-map (kbd "C-M-j") 'skk-undo-kakutei)
+;; 変換候補を2列
+;(setq skk-henkan-show-candidates-rows 2)
+
 ;; アノテーション
 (setq skk-show-annotation t)
 ;; モードラインにSKKアイコンを表示

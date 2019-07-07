@@ -1,5 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; atom-one-dark  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package zerodark-theme)
-(load-theme 'zerodark t)
+(use-package zerodark-theme
+  :config
+  (load-theme 'zerodark t)
+  )

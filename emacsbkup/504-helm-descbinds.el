@@ -2,5 +2,5 @@
 ;; helm
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package helm-descbinds)
-;x(require 'helm-descbinds)
+;; (require 'helm-descbinds)
 

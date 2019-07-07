@@ -1,6 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elscreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package elscreen)
-(elscreen-start)
-(elscreen-set-prefix-key "\C-t")
+(use-package elscreen
+  :config
+  (elscreen-start)
+  (elscreen-set-prefix-key "\C-t")
+)

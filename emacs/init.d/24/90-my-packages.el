@@ -573,3 +573,31 @@
         calendar-week-start-day 0)
   (calendar-set-date-style 'iso)
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; paren
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package paren
+    :ensure nil
+    :hook
+    (after-init . show-paren-mode)
+    :custom-face
+    (show-paren-match ((nil (:background "#44475a" :foreground "#f1fa8c"))))
+    :custom
+    (show-paren-style 'mixed)
+    (show-paren-when-point-inside-paren t)
+    (show-paren-when-point-in-periphery t))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; neotree
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (use-package all-the-icons)
+;; (use-package neotree
+;;   :config
+;;   ;; 隠しファイルをデフォルトで表示
+;;   (global-set-key [f8] 'neotree-toggle)
+;;   (setq neo-smart-open t)           ;; neotreeを開いた時のカレントファイルのディレクトリを表示する
+;;   (setq neo-show-hidden-files t)    ;; 隠しファイルをデフォルトで表示
+;; ;;  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;;   )
+;;; 90-my-packages_win.el end here

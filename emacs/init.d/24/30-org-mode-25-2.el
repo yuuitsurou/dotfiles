@@ -9,7 +9,7 @@
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-startup-truncated nil)
 ;(add-to-list 'org-export-backends 'md)
-(setq org-hide-leading-stars t)
+;(setq org-hide-leading-stars t)
 (setq org-directory "~/org")
 (setq org-agenda-files (list org-directory))
 (setq org-default-notes-file "notes.org")
@@ -42,3 +42,7 @@
                                  (show-org-buffer "notes.org")))
 
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+
+(setq org-startup-indented t)
+(setq org-indent-mode-turns-on-hiding-stars nil)
+(setq org-indent-indentation-per-level 4)

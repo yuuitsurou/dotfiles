@@ -70,6 +70,7 @@
 
 ;; 単語登録／単語削除のたびに個人辞書を保存する
 (setq skk-save-jisyo-instantly t)
+(define-key minibuffer-local-map (kbd "C-j") 'skk-kakutei)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elscreen
@@ -144,7 +145,8 @@
   (define-key helm-command-map (kbd "d")   'helm-descbinds)
   (define-key helm-command-map (kbd "b")   'helm-buffers-list)
   (define-key helm-command-map (kbd "i")   'helm-imenu)
-  (define-key helm-command-map (kbd "M") 'helm-semantic-or-imenu)
+  (define-key helm-command-map (kbd "M")   'helm-semantic-or-imenu)
+  (define-key helm-command-map (kbd "o")   'helm-org-agenda-files-headings)
 
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
@@ -247,7 +249,7 @@
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; atom-one-dark  
+;; zero-dark theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package zerodark-theme
   :config
@@ -255,7 +257,7 @@
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; moccur edit
+;;; point-undo
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package point-undo
   :config
@@ -277,7 +279,7 @@
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; company 
+;; company
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package company
   :config
@@ -416,7 +418,7 @@
 ;;; js2-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package js2-mode
-  :ensure t
+;;  :ensure t
   :config
   ;;(require 'js2-mode)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -477,7 +479,7 @@
 (use-package org-journal
   :init
   (customize-set-variable 'org-journal-dir "~/org/journal/")
-  (customize-set-variable 'org-journal-date-format "%x (%a)")
+  (customize-set-variable 'org-journal-date-format "%Y/%m/%d")
   (customize-set-variable 'org-journal-time-format "< %R >\n ")
   :config
   (require 'org-journal)

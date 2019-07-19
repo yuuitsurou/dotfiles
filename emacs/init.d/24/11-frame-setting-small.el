@@ -34,7 +34,7 @@
 (setq default-frame-alist
       (append (list 
 			   '(width . 100)
-			   '(height . 50)
+			   '(height . 45)
 			   '(top . 5)
 			   '(left . 5)
 			   '(alpha . (95 84 60 60))

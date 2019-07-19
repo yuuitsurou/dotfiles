@@ -112,6 +112,8 @@
   ;;(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
   ;; helm-source-buffers-list のバッファ名を表示する幅
   (setq helm-buffer-max-length 50)
+  ;; helm-follow-mode の前回の状態を維持する
+  (setq helm-follow-mode-persistent t)
   ;; 自動補完を無効にする
   (setq helm-ff-auto-update-initial-value nil)
   ;; TAB で補完する
@@ -125,9 +127,9 @@
   (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 
   ;; key setteings
-					;(global-set-key (kbd "C-c h") 'helm-mini)
+  ;;(global-set-key (kbd "C-c h") 'helm-mini)
   (global-set-key (kbd "M-x") 'helm-M-x)
-					;(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+  ;;(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-;") 'helm-for-files)
   (global-set-key (kbd "C-M-o") 'helm-occur)
   ;; プレフィックスキー C-;
@@ -181,7 +183,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package helm-swoop
   :config
-  (require 'helm-swoop)
+  ;;(require 'helm-swoop)
   (helm-migemo-mode 1)
   ;; キーバインドはお好みで
   (global-set-key (kbd "M-p") 'helm-swoop)
@@ -224,12 +226,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package helm-ag
   :config
-  (require 'helm-ag)
+  ;;(require 'helm-ag)
   (setq helm-ag-base-command "rg --no-heading --line-number --color never")
   ;; 現在のシンボルをデフォルトのクエリにする
   (setq helm-ag-insert-at-point 'symbol)
   ;;
   (global-set-key (kbd "C-M-g") 'helm-ag)
+  (global-set-key (kbd "C-M-G") 'helm-do-ag)
   (global-set-key (kbd "C-M-k") 'backward-kill-sexp)
 
   (defun helm-ag-dot-emacs ()
@@ -555,6 +558,11 @@
   :config
   (rg-enable-default-bindings)
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; magit
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package magit)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; neotree

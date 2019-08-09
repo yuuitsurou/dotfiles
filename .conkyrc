@@ -39,7 +39,7 @@ conky.config = {
     minimum_width  = 200
 }
 conky.text = [[
-${voffset 5}${color}$alignc${font Migu 1M:size=12}${time %I:%M}   $font
+${voffset 5}${color}$alignc${font Migu 1M:size=12}${time %H:%M}   $font
 ${voffset 5}${color}${alignc}${time %Y年 %b %-d日 (%a)}
 #
 ${voffset 20}${goto 40}${color}CPU${font DejaVu Sans Mono:bold:size=8}$alignr$cpu%

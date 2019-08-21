@@ -37,6 +37,6 @@
 			   '(height . 45)
 			   '(top . 5)
 			   '(left . 5)
-			   '(alpha . (95 84 60 60))
+			   '(alpha . (0.90 0.90))
 			   )
 			  default-frame-alist))

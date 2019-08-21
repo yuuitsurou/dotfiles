@@ -258,7 +258,7 @@
   (global-set-key (kbd "C-c i r") 'ivy-resume)
   )
 
-;;(use-package ivy-hydra)
+(use-package ivy-hydra)
 
 (use-package counsel
   :config
@@ -471,17 +471,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package bm
   :config
-  (setq-default bm-buffer-persistence nil)
-  (setq bm-restore-repository-on-load t)
   (require 'bm)
-  (add-hook 'find-file-hook 'bm-buffer-restore)
-  (add-hook 'kill-buffer-hook 'bm-buffer-save)
-  (add-hook 'after-save-hook 'bm-buffer-save)
-  (add-hook 'after-revert-hook 'bm-buffer-restore)
-  (add-hook 'vc-before-checkin-hook 'bm-buffer-save)
-  (add-hook 'kill-emacs-hook '(lambda nil
-				(bm-buffer-save-all)
-				(bm-repository-save)))
+  (setq-default bm-buffer-persistence t)
+  (setq bm-restore-repository-on-load t)
+  (setq bm-cycle-all-buffers t)
+  (setq bm-buffer-persistence t)
+  (setq bm-persistent-face 'bm-face)
+  (add-hook 'find-file-hooks #'bm-buffer-restore)
+  (unless noninteractive
+    (bm-repository-load)
+    (add-hook 'kill-buffer-hook 'bm-buffer-save)
+    (add-hook 'after-save-hook 'bm-buffer-save)
+    (add-hook 'after-revert-hook 'bm-buffer-restore)
+    (add-hook 'kill-emacs-hook '(lambda nil
+				  (bm-buffer-save-all)
+				  (bm-repository-save))))
   (global-set-key (kbd "M-SPC") 'bm-toggle)
   (global-set-key (kbd "M-[") 'bm-previous)
   (global-set-key (kbd "M-]") 'bm-next)

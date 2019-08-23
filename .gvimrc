@@ -81,8 +81,8 @@ set cmdheight=2
 "colorscheme desert " (GUI使用時)
 "colorscheme material-theme " (GUI使用時)
 colorscheme nefertiti
-set t_Co=256
-set background=dark
+"set t_Co=256
+"set background=dark
 
 "---------------------------------------------------------------------------
 " 日本語入力に関する設定:

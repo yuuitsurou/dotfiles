@@ -1,6 +1,6 @@
 conky.config = {
     alignment = 'top_right',
-    gap_x = 50,
+    gap_x = 30,
     gap_y = 50,
     background = true,
     double_buffer = true,
@@ -39,24 +39,25 @@ conky.config = {
     minimum_width  = 200
 }
 conky.text = [[
-${voffset 5}${color}$alignc${font Migu 1M:size=12}${time %H:%M}   $font
-${voffset 5}${color}${alignc}${time %Y年 %b %-d日 (%a)}
+${voffset 5}${color}${alignr}${font Migu 1M:size=24}${time %Y年}
+${voffset 5}${color}${alignr}${font Migu 1M:size=24}${time %b%-d日(%a)}
+${voffset 5}${color}$alignr${font Migu 1M:size=12}${time %H:%M}$font
 #
-${voffset 20}${goto 40}${color}CPU${font DejaVu Sans Mono:bold:size=8}$alignr$cpu%
+${voffset 20}${goto 40}${color}CPU${font DejaVu Sans Mono:bold:size=9}$alignr$cpu%
 ${voffset 5}${goto 40}$font$color2${top name 1}$alignr$color${top cpu 1}%
 ${goto 40}$color2${top name 2}$alignr$color${top cpu 2}%
 ${goto 40}$color2${top name 3}$alignr$color${top cpu 3}%
 ${goto 40}$color2${top name 4}$alignr$color${top cpu 4}%
 # ${goto 40}$color2${top name 5}$alignr$color${top cpu 5}%
 #
-${voffset 10}${goto 40}${color}RAM${font DejaVu Sans Mono:bold:size=8}$alignr$mem$font
+${voffset 10}${goto 40}${color}RAM${font DejaVu Sans Mono:bold:size=9}$alignr$mem$font
 ${goto 40}${voffset 5}$color2${top_mem name 1}$alignr$color${top_mem mem_res 1}
 ${goto 40}$color2${top_mem name 2}$alignr$color${top_mem mem_res 2}
 ${goto 40}$color2${top_mem name 3}$alignr$color${top_mem mem_res 3}
 ${goto 40}$color2${top_mem name 4}$alignr$color${top_mem mem_res 4}
 # ${goto 40}$color2${top_mem name 5}$alignr$color${top_mem mem_res 5}
 #
-${voffset 10}${goto 40}${color}Swap${font DejaVu Sans Mono:bold:size=8}$alignr${swap}/ ${swapfree}
+${voffset 10}${goto 40}${color}Swap${font DejaVu Sans Mono:bold:size=9}$alignr${swap}/ ${swapfree}
 ${voffset 10}${color2}${alignr}${execi 1200 whoami}@${nodename}
 ${alignr}${color2}${font DejaVu Sans Mono:size=8}uptime: ${color}${uptime_short}
 ${voffset 5}${color2}${font DejaVu Sans Mono:size=8}${alignr}kernel: ${color}${kernel}

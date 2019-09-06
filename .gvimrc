@@ -80,7 +80,8 @@ set cmdheight=2
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
 "colorscheme desert " (GUI使用時)
 "colorscheme material-theme " (GUI使用時)
-colorscheme nefertiti
+"colorscheme nefertiti
+colorscheme nord
 "set t_Co=256
 "set background=dark
 

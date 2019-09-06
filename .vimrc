@@ -236,7 +236,7 @@ set formatoptions+=mM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dein settings {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath+=/home/ymine/.vim.d/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/ymine/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('$HOME/.cache/dein')
   call dein#begin('$HOME/.cache/dein')
 

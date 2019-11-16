@@ -269,6 +269,7 @@
   (global-set-key (kbd "C-M-r") 'counsel-recentf)
   (global-set-key (kbd "C-c h b") 'counsel-descbinds)
   (global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
+  (global-set-key (kbd "C-x m") 'counsel-mark-ring)
   (setq counsel-find-file-ignore-regexp (regexp-opt '("./" "..")))
   )
 

@@ -236,26 +236,36 @@ set formatoptions+=mM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dein settings {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath+=/home/ymine/.cache/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('$HOME/.cache/dein')
-  call dein#begin('$HOME/.cache/dein')
+let g:python3_host_prog = '/home/ymine/.pyenv/shims/python3'
+set runtimepath+=/home/ymine/.vim.d/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('/home/ymine/.vim.d/dein')
+  call dein#begin('/home/ymine/.vim.d/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('/home/ymine/.vim.d/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
 
 "call dein#add('Shougo/unite.vim')
 "call dein#add('Shougo/neomru.vim')
 call dein#add('vim-scripts/Zenburn')
+if ((has('nvim') || has('timers')) && has('python3')) !=# ''
+	call dein#add('Shougo/deoplete.nvim')
+	call dein#add('Shougo/denite.nvim')
+	if !has('nvim')
+		call dein#add('roxma/nvim-yarp')
+		call dein#add('roxma/vim-hug-neovim-rpc')
+	endif
+endif
 call dein#add('jdkanani/vim-material-theme')
 call dein#add('jonathanfilip/vim-lucius')
 call dein#add('jeetsukumaran/vim-nefertiti')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('arcticicestudio/nord-vim')
-call dein#add('jacoborus/tender.vim')
 call dein#add('scrooloose/nerdtree')
+call dein#add('jacoborus/tender.vim')
+"call dein#add('preservim/nerdtree')
 call dein#add('Townk/vim-autoclose')
 call dein#add('jremmen/vim-ripgrep')
 "call dein#add('rking/ag.vim')
@@ -271,42 +281,68 @@ if dein#check_install()
   call dein#install()
 endif
 
-set grepprg=rg\ -nH\ --no-heading\ --color\ never
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" unite 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" insert modeで開始
-"let g:unite_enable_start_insert = 1
-
-" 大文字小文字を区別しない
-"let g:unite_enable_ignore_case = 1
-"let g:unite_enable_smart_case = 1
-
-" grep検
-"nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-"nnoremap <silent> ,g  :<C-u>Unite grep -buffer-name=search-buffer<CR>
-
-" カーソル位置の単語をgrep検索
-"nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-"nnoremap <silent> ,cg :<C-u>Unite grep -buffer-name=search-buffer<CR><C-R><C-W>
-
-" grep検索結果の再呼出
-"nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
-
-" unite grep に ag(The Silver Searcher) を使う
-"if executable('rg')
-"  let g:unite_source_grep_command = 'rg'
-"  let g:unite_source_grep_default_opts = '--no-heading --color never'
-"  let g:unite_source_grep_recursive_opt = ''
+"if dein#tap('deoplete.nvim')
+"	let g:deoplete#enable_at_startup = 1
 "endif
+
+nmap <silent> ,f :<C-u>Denite file<CR>
+nmap <silent> ,F :<C-u>Denite file/rec<CR>
+nmap <silent> ,g :<C-u>Denite grep<CR>
+nmap <silent> ,b :<C-u>Denite buffer<CR>
+nmap <silent> ,l :<C-u>Denite line<CR>
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  " 一つ上のディレクトリを開き直す
+  inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
+  " imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+  " Deniteを閉じる
+  inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+endfunction
+
+" Change file/rec command.
+call denite#custom#var('file/rec', 'command',
+\ ['rg', '--files', '--glob', '!.git'])
+
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['-i', '--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+" Specify multiple paths in grep source
+"call denite#start([{'name': 'grep',
+"      \ 'args': [['a.vim', 'b.vim'], '', 'pattern']}])
+set grepprg=rg\ -nH\ --no-heading\ --color\ never
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if &t_Co > 2 || has("gui_running")
+syntax enable
+"if &t_Co > 2 || has("gui_running")
   syntax on
-endif
+"endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

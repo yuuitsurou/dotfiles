@@ -91,3 +91,4 @@ setopt auto_param_keys
 
 setopt no_flow_control
 
+export TERM=xterm-256color

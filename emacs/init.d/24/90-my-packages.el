@@ -74,8 +74,76 @@
 (use-package mozc
   :config
   (setq default-input-method "japanese-mozc")
-  (setq mozc-candidate-style 'overlay)
+;  (setq mozc-candidate-style 'overlay)
+;  (setq mozc-candidate-style 'echo-area)
+    (progn ;toggle input method
+      (define-key global-map [henkan]
+	(lambda ()
+	  (interactive)
+	  (if current-input-method (inactivate-input-method))
+	  (toggle-input-method)))
+      ;; (define-key global-map [muhenkan]
+      ;;   (lambda ()
+      ;;     (interactive)
+      ;;     (inactivate-input-method)))
+      (define-key global-map [zenkaku-hankaku]
+	(lambda ()
+	  (interactive)
+	  (toggle-input-method)))
+
+      (defadvice mozc-handle-event (around intercept-keys (event))
+	"Intercept keys muhenkan and zenkaku-hankaku, before passing keys to mozc-server (which the function mozc-handle-event does), to properly disable mozc-mode."
+	(if (member event (list 'zenkaku-hankaku 'muhenkan))
+	    (progn
+	      (mozc-clean-up-session)
+	      (toggle-input-method))
+	  (progn ;(message "%s" event) ;debug
+	    ad-do-it)))
+      (ad-activate 'mozc-handle-event))
+    ;; (global-set-key (kbd "<henkan>") '(lambda ()
+    ;; 				      (interactive)
+    ;; 				      (mozc-mode 1)
+    ;; 				      (set-cursor-color "dark orange")
+    ;; 				      ))
+    ;; (global-set-key (kbd "<muhenkan>") '(lambda ()
+    ;; 					(interactive)
+    ;; 					(mozc-mode 0)
+    ;; 					(set-cursor-color "grey")
+    ;; 					))
   )
+(use-package mozc-popup
+  :config
+  (setq mozc-candidate-style 'popup)
+  )
+  
+;; (use-package ibus
+;;   :config
+;;   (add-hook 'after-init-hook 'ibus-mode-on)
+
+;;   ;; C-SPC は Set Mark に使う
+;;   (ibus-define-common-key ?\C-s nil)
+;;   ;; C-/ は Undo に使う
+;;   (ibus-define-common-key ?\C-/ nil)
+;;   ;; IBusの状態によってカーソル色を変化させる ("on" "off" "disabled")
+;;   (setq ibus-cursor-color '("firebrick" "dark orange" "royal blue"))
+;;   ;; すべてのバッファで入力状態を共有 (default ではバッファ毎にインプットメソッドの状態を保持)
+;;   (setq ibus-mode-local nil)
+;;   ;; カーソル位置で予測候補ウィンドウを表示 (default はプリエディット領域の先頭位置に表示)
+;;   (setq ibus-prediction-window-position t)
+;;   ;; isearch 時はオフに
+;;   (ibus-disable-isearch)
+;;   ;; mini buffer ではオフに
+;;   (add-hook 'minibuffer-setup-hook 'ibus-disable)
+;;   ;; Keybindings
+;;   ;;(global-set-key (kbd "henkan") 'ibus-toggle)
+;;   (global-set-key (kbd "<henkan>") (lambda () (interactive) (ibus-enable)))
+;;   (global-set-key (kbd "<muhenkan>") (lambda () (interactive) (ibus-disable)))
+;;   (global-set-key (kbd "C-<f7>")
+;;                   (lambda ()
+;;                     (interactive)
+;;                     (shell-command-to-string
+;;                      "/usr/lib/mozc/mozc_tool --mode=word_register_dialog")))
+;;   )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elscreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

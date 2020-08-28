@@ -82,10 +82,12 @@
 	  (interactive)
 	  (if current-input-method (inactivate-input-method))
 	  (toggle-input-method)))
-      ;; (define-key global-map [muhenkan]
-      ;;   (lambda ()
-      ;;     (interactive)
-      ;;     (inactivate-input-method)))
+      (define-key global-map [muhenkan]
+        (lambda ()
+          (interactive)
+          (inactivate-input-method)
+	  )
+	)
       (define-key global-map [zenkaku-hankaku]
 	(lambda ()
 	  (interactive)

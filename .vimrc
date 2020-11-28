@@ -349,6 +349,8 @@ syntax enable
 set clipboard=unnamed
 
 let NERDTreeShowHidden=1 
+
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " END OF THIS FILE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

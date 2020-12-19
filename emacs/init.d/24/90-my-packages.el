@@ -27,7 +27,7 @@
 ;; ;(setq skk-dcomp-activate t)
 ;; ;(setq skk-dcomp-multiple-activate t) ; 動的補完の複数候補表示
 ;; ;(setq skk-dcomp-multiple-rows 10)    ; 動的補完の候補表示件数
-;; (setq skk-iserach-start-mode 'latin)
+(setq skk-iserach-start-mode 'latin)
 ;; ;; 半角カナ入力
 (setq skk-use-jisx0201-input-method t)
 (setq skk-share-private-jisyo t)
@@ -69,8 +69,8 @@
 (cancel-function-timers 'skk-auto-save-jisyo)
 
 ;; ;; 単語登録／単語削除のたびに個人辞書を保存する
-;; (setq skk-save-jisyo-instantly t)
-;; (define-key minibuffer-local-map (kbd "C-j") 'skk-kakutei)
+(setq skk-save-jisyo-instantly t)
+(define-key minibuffer-local-map (kbd "C-j") 'skk-kakutei)
 ;; (use-package mozc
 ;;   :config
 ;;   (setq default-input-method "japanese-mozc")

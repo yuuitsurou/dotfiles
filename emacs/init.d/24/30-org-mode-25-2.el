@@ -16,7 +16,7 @@
 
 ;; TODO
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "SOMEDAY(s)")))
+      '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "DOING(g)" "|" "DONE(d)" "CANCELED(c@)")))
 
 ;; DONEの時刻
 (setq org-log-done 'time)

@@ -349,7 +349,8 @@
 
 (use-package swiper
   :config
-  (global-set-key (kbd "C-c M-s") 'swiper-thing-at-point)
+  (global-set-key (kbd "C-c M-s") 'swiper)
+  (global-set-key (kbd "C-c M-p") 'swiper-thing-at-point)
   (defun ad:swiper-thing-at-point ()
     "`swiper' with `ivy-thing-at-point'."
     (interactive)

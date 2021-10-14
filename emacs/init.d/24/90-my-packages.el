@@ -719,6 +719,17 @@
 	 )
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fold-this.el
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package fold-this
+  :config
+  (require 'fold-this)
+  (global-set-key (kbd "C-c C-f") 'fold-this-all)
+  (global-set-key (kbd "C-c C-F") 'fold-this)
+  (global-set-key (kbd "C-c M-F") 'fold-this-unfold-all)
+  )
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; neotree
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -471,6 +471,8 @@
   (require 'google-translate)
   (require 'google-translate-default-ui)
 
+  (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130))
+  (setq google-translate-backend-method 'curl)
   (defvar google-translate-english-chars "[:ascii:]’“”–"
     "これらの文字が含まれているときは英語とみなす")
   (defun google-translate-enja-or-jaen (&optional string)

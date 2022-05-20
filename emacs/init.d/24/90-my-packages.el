@@ -263,10 +263,64 @@
 (use-package consult
  :init
  :config
- :bind
- (
+ (consult-customize
+  consult-theme
+  consult-ripgrep consult-git-grep consult-grep
+  consult-bookmark consult-recent-file consult-xref
+  consult--source-bookmark consult--source-recent-file 
+  :preview-key (kbd "M-."))
+ :bind (
+	("C-c h" . consult-history)
+	("C-c k" . consult-kmacro)
+	("C-x b" . consult-buffer)
+	("C-x 4 b" . consult-buffer-other-window)
+	("C-x 5 b" . consult-buffer-other-frame)
+	("C-x r b" . consult-bookmark)
+	("M-g g" . consult-goto-line)
+	("M-g o" . consult-outline)
+	("M-g m" . consult-mark)
+	("M-g k" . consult-global-mark)
+	("M-s d" . consult-find)
+	("M-s r" . consult-ripgrep)
+	("M-s l" . consult-line)
+	("M-s L" . consult-line-multi)
+	("M-s m" . consult-multi-occur)
   )
  )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; orderless
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless))
+  )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; marginalia
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package marginalia
+  :bind (("M-A" . marginalia-cycle)
+	 :map minibuffer-local-map
+	 ("M-A" . marginalia-cycle))
+  :init
+  (marginalia-mode)
+  (savehist-mode)
+  )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; embark
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package embark
+  :ensure t
+  :bind
+  (("C-." . embark-act)
+   ("C-;" . embark-dwin)
+   )
+  )
+(use-package embark-consult
+  :ensure t
+  :after (embark consult)
+  :demand t
+  )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; popup-kill-ring
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

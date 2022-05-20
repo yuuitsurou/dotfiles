@@ -265,26 +265,42 @@
  :config
  (consult-customize
   consult-theme
+  :preview-key '(:debounce 0.2 any)
   consult-ripgrep consult-git-grep consult-grep
   consult-bookmark consult-recent-file consult-xref
   consult--source-bookmark consult--source-recent-file 
-  :preview-key (kbd "M-."))
+  :preview-key (kbd "M-.")
+  )
+ (consult-customize
+  consult-line
+  :add-history (seq-some #'thing-at-point '(region symbol)))
+ (defalias 'consult-line-thing-at-point 'consult-line)
+ (consult-customize
+  consult-line-thing-at-point
+  :initial (thing-at-point 'symbol))
  :bind (
 	("C-c h" . consult-history)
+	("C-c m" . consult-mode-command)
 	("C-c k" . consult-kmacro)
 	("C-x b" . consult-buffer)
 	("C-x 4 b" . consult-buffer-other-window)
 	("C-x 5 b" . consult-buffer-other-frame)
 	("C-x r b" . consult-bookmark)
+	("<help> a" . consult-apropos)
 	("M-g g" . consult-goto-line)
+	("M-g M-g" . consult-goto-line)
 	("M-g o" . consult-outline)
 	("M-g m" . consult-mark)
 	("M-g k" . consult-global-mark)
+	("M-g i" . consult-imenu)
+	("M-g I" . consult-imenu-multi)
 	("M-s d" . consult-find)
 	("M-s r" . consult-ripgrep)
 	("M-s l" . consult-line)
 	("M-s L" . consult-line-multi)
 	("M-s m" . consult-multi-occur)
+	("M-s k" . consult-keep-lines)
+	("M-s u" . consult-focus-lines)
   )
  )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

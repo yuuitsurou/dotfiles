@@ -174,147 +174,6 @@
   (migemo-init)
 )
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; helm
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package helm
-;;   :config
-;;   (require 'helm-config)
-;;   (helm-mode 1)
-;;   (helm-migemo-mode 1)
-;;   ;; helm を適用しないコマンド
-;;   ;;(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
-;;   ;; helm-source-buffers-list のバッファ名を表示する幅
-;;   (setq helm-buffer-max-length 50)
-;;   ;; helm-follow-mode の前回の状態を維持する
-;;   (setq helm-follow-mode-persistent t)
-;;   ;; 自動補完を無効にする
-;;   (setq helm-ff-auto-update-initial-value nil)
-;;   ;; TAB で補完する
-;;   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-;;   (define-key helm-map (kbd "C-]") 'helm-execute-persistent-action)
-;;   (define-key helm-map (kbd "C-:") 'helm-select-action)
-;;   ;;(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
-;;   ;;(define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action)
-
-;;   (define-key helm-map (kbd "C-h") 'delete-backward-char)
-;;   (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
-
-;;   ;; key setteings
-;;   ;;(global-set-key (kbd "C-c h") 'helm-mini)
-;;   (global-set-key (kbd "M-x") 'helm-M-x)
-;;   ;;(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-;;   (global-set-key (kbd "C-x C-;") 'helm-for-files)
-;;   (global-set-key (kbd "C-M-o") 'helm-occur)
-;;   ;; プレフィックスキー C-;
-;;   ;;(custom-set-variables '(helm-command-prefix-key "C-;"))
-;;   (global-set-key (kbd "C-;") 'helm-command-prefix)
-;;   (global-unset-key (kbd "C-x c"))
-;;   ;; キーバインドを設定する。C-; でコマンド起動後は、以下のキーが利用可能となる
-;;   ;;  M-n     ：カーソル位置の単語を検索パターンに追加
-;;   ;;  C-z     ：チラ見
-;;   ;;  C-c C-f ：helm-follow-mode の ON/OFF
-;;   (define-key helm-command-map (kbd "h") 'helm-mini)
-;;   (define-key helm-command-map (kbd "C-;") 'helm-resume)
-;;   (define-key helm-command-map (kbd "f")   'helm-find-files)
-;;   (define-key helm-command-map (kbd "y")   'helm-show-kill-ring)
-;;   (define-key helm-command-map (kbd "d")   'helm-descbinds)
-;;   (define-key helm-command-map (kbd "b")   'helm-buffers-list)
-;;   (define-key helm-command-map (kbd "i")   'helm-imenu)
-;;   (define-key helm-command-map (kbd "M")   'helm-semantic-or-imenu)
-;;   (define-key helm-command-map (kbd "o")   'helm-org-agenda-files-headings)
-
-;;   (when (executable-find "curl")
-;;     (setq helm-google-suggest-use-curl-p t))
-
-;;   (setq helm-split-window-in-side-p t
-;; 					; helm-move-to-line-cycle-in-source t
-;; 	helm-ff-search-library-in-sexp t
-;; 	helm-scroll-amount 8
-;; 	helm-ff-file-name-history-use-recentf t
-;; 	helm-echo-input-in-header-line t)
-
-;;   ;; Emulate `kill-line' in helm minibuffer
-;;   (setq helm-delete-minibuffer-contents-from-point t)
-;;   (defadvice helm-delete-minibuffer-contents (before helm-emulate-kill-line activate)
-;;     "Emulate `kill-line' in helm minibuffer"
-;;     (kill-new (buffer-substring (point) (field-end))))
-;;   ;; helm-delete-minibuffer-contents-from-point（ミニバッファで C-k 入力時にカーソル以降を
-;;   ;; 削除する)を設定すると、pattern 文字入力後に action が表示されない症状が出ることの対策
-;;   (defadvice helm-select-action (around ad-helm-select-action activate)
-;;     (let ((helm-delete-minibuffer-contents-from-point nil))
-;;       ad-do-it))
-;; )
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; helm
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package helm-descbinds)
-;; ;; (require 'helm-descbinds)
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; helm swoop
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package helm-swoop
-;;   :config
-;;   ;;(require 'helm-swoop)
-;;   (helm-migemo-mode 1)
-;;   ;; キーバインドはお好みで
-;;   (global-set-key (kbd "M-p") 'helm-swoop)
-;;   (global-set-key (kbd "M-P") 'helm-swoop-back-to-last-point)
-;;   (global-set-key (kbd "C-c M-p") 'helm-multi-swoop)
-;;   (global-set-key (kbd "C-x M-p") 'helm-multi-swoop-all)
-
-;;   ;; isearch実行中にhelm-swoopに移行
-;;   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-;;   ;; helm-swoop実行中にhelm-multi-swoop-allに移行
-;;   (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-
-;;   ;; Save buffer when helm-multi-swoop-edit complete
-;;   (setq helm-multi-swoop-edit-save t)
-
-;;   ;; tの場合はウィンドウ内に分割、nilなら別のウィンドウを使用
-;;   (setq helm-swoop-split-with-multiple-windows t)
-
-;;   ;; ウィンドウ分割方向 'split-window-vertically or 'split-window-horizontally
-;;   (setq helm-swoop-split-direction 'split-window-vertically)
-
-;;   ;; nilなら一覧のテキストカラーを失う代わりに、起動スピードをほんの少し上げる
-;;   (setq helm-swoop-speed-or-color t)
-
-;;   (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-;;   (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-;;   (cl-defun helm-swoop-nomigemo (&key $query ($multiline current-prefix-arg))
-;;     "シンボル検索用Migemo無効版helm-swoop"
-;;     (interactive)
-;;     (let ((helm-swoop-pre-input-function
-;; 	   (lambda () (format "\\_<%s\\_> " (thing-at-point 'symbol)))))
-;;       (helm-swoop :$source (delete '(migemo) (copy-sequence (helm-c-source-swoop)))
-;; 		  :$query $query :$multiline $multiline)))
-;; ;;; C-M-:に割り当て
-;;   (global-set-key (kbd "C-M-:") 'helm-swoop-nomigemo)
-;; )
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; helm-ag
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package helm-ag
-;;   :config
-;;   ;;(require 'helm-ag)
-;;   (setq helm-ag-base-command "rg --no-heading --line-number --color never")
-;;   ;; 現在のシンボルをデフォルトのクエリにする
-;;   (setq helm-ag-insert-at-point 'symbol)
-;;   ;;
-;;   (global-set-key (kbd "C-M-g") 'helm-ag)
-;;   (global-set-key (kbd "C-M-G") 'helm-do-ag)
-;;   (global-set-key (kbd "C-M-k") 'backward-kill-sexp)
-
-;;   (defun helm-ag-dot-emacs ()
-;;     ".emacs.d以下を検索"
-;;     (interactive)
-;;     (helm-ag "~/.emacs.d/"))
-;; )
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ivy / counsel / swiper
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -377,7 +236,8 @@
 (ivy-add-actions
  'counsel-rg
  '(("r" my-counsel-rg-in-dir "search in directory")))
-;; (use-package avy)
+
+;(use-package avy)
 
 ;; (use-package avy-migemo
 ;;    :config
@@ -387,6 +247,26 @@
 ;;    (global-set-key (kbd "C-M-;") 'avy-migemo-goto-char-timer)
 ;;    )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; vertico
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(use-package vertico
+;  :init
+;  (vertico-mode)
+;  :config
+;  (setq vertico-count 20)
+;  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; consult
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(use-package consult
+;  :init
+;  :config
+;  :bind
+;  (
+;   )
+;  )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; popup-kill-ring
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

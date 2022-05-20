@@ -178,64 +178,64 @@
 ;; ivy / counsel / swiper
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package ivy
-  :demand
-  :config
-  (setq ivy-use-virtual-buffers t
-	enable-recursive-minibuffers t
-	ivy-height 30
-	ivy-extra-directories nil
-	ivy-re-builders-alist
-	'((t . ivy--regex-plus))
-	ivy-count-format "(%d/%d) ")
-  (global-set-key (kbd "C-c i r") 'ivy-resume)
-  )
+;; (use-package ivy
+;;   :demand
+;;   :config
+;;   (setq ivy-use-virtual-buffers t
+;; 	enable-recursive-minibuffers t
+;; 	ivy-height 30
+;; 	ivy-extra-directories nil
+;; 	ivy-re-builders-alist
+;; 	'((t . ivy--regex-plus))
+;; 	ivy-count-format "(%d/%d) ")
+;;   (global-set-key (kbd "C-c i r") 'ivy-resume)
+;;   )
 
-(use-package ivy-hydra)
+;; (use-package ivy-hydra)
 
-(use-package counsel
-  :config
-  (counsel-mode 1)
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-M-f") 'counsel-rg)
-  (global-set-key (kbd "C-M-r") 'counsel-recentf)
-  (global-set-key (kbd "C-c h b") 'counsel-descbinds)
-  (global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
-  (global-set-key (kbd "C-x m") 'counsel-mark-ring)
-  (setq counsel-find-file-ignore-regexp (regexp-opt '("./" "..")))
-  )
+;; (use-package counsel
+;;   :config
+;;   (counsel-mode 1)
+;;   (global-set-key (kbd "M-x") 'counsel-M-x)
+;;   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;;   (global-set-key (kbd "C-M-f") 'counsel-rg)
+;;   (global-set-key (kbd "C-M-r") 'counsel-recentf)
+;;   (global-set-key (kbd "C-c h b") 'counsel-descbinds)
+;;   (global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
+;;   (global-set-key (kbd "C-x m") 'counsel-mark-ring)
+;;   (setq counsel-find-file-ignore-regexp (regexp-opt '("./" "..")))
+;;   )
 
-(use-package swiper
-  :config
-  (global-set-key (kbd "C-c M-s") 'swiper)
-  (global-set-key (kbd "C-c M-p") 'swiper-thing-at-point)
-  (defun ad:swiper-thing-at-point ()
-    "`swiper' with `ivy-thing-at-point'."
-    (interactive)
-    (let ((thing (if (thing-at-point-looking-at "^\\*+")
-                     nil
-                   (ivy-thing-at-point))))
-      (when (use-region-p)
-        (deactivate-mark))
-      (swiper thing)))
+;; (use-package swiper
+;;   :config
+;;   (global-set-key (kbd "C-c M-s") 'swiper)
+;;   (global-set-key (kbd "C-c M-p") 'swiper-thing-at-point)
+;;   (defun ad:swiper-thing-at-point ()
+;;     "`swiper' with `ivy-thing-at-point'."
+;;     (interactive)
+;;     (let ((thing (if (thing-at-point-looking-at "^\\*+")
+;;                      nil
+;;                    (ivy-thing-at-point))))
+;;       (when (use-region-p)
+;;         (deactivate-mark))
+;;       (swiper thing)))
 
-  (advice-add 'swiper-thing-at-point :override #'ad:swiper-thing-at-point)
-;; (defun isearch-forward-or-swiper (use-swiper)
-  ;;   (interactive "p")
-  ;;   (let (current-prefix-arg)
-  ;;     (call-interactively (if use-swiper 'swiper 'isearch-forward))))
-  ;;   (global-set-key (kbd "C-s") 'isearch-forward-or-swiper)
-  )
-;; directory を指定して rg やり直し．クエリは再利用する
-(defun my-counsel-rg-in-dir (_arg)
-  "Search again with new root directory."
-  (let ((current-prefix-arg '(4)))
-    (counsel-rg ivy-text nil ""))) ;; also disable extra-rg-args
+;;   (advice-add 'swiper-thing-at-point :override #'ad:swiper-thing-at-point)
+;; ;; (defun isearch-forward-or-swiper (use-swiper)
+;;   ;;   (interactive "p")
+;;   ;;   (let (current-prefix-arg)
+;;   ;;     (call-interactively (if use-swiper 'swiper 'isearch-forward))))
+;;   ;;   (global-set-key (kbd "C-s") 'isearch-forward-or-swiper)
+;;   )
+;; ;; directory を指定して rg やり直し．クエリは再利用する
+;; (defun my-counsel-rg-in-dir (_arg)
+;;   "Search again with new root directory."
+;;   (let ((current-prefix-arg '(4)))
+;;     (counsel-rg ivy-text nil ""))) ;; also disable extra-rg-args
 
-(ivy-add-actions
- 'counsel-rg
- '(("r" my-counsel-rg-in-dir "search in directory")))
+;; (ivy-add-actions
+;;  'counsel-rg
+;;  '(("r" my-counsel-rg-in-dir "search in directory")))
 
 ;(use-package avy)
 
@@ -250,23 +250,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; vertico
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(use-package vertico
-;  :init
-;  (vertico-mode)
-;  :config
-;  (setq vertico-count 20)
-;  )
+(use-package vertico
+ :init
+ (vertico-mode)
+ :config
+ (setq vertico-count 20)
+ )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; consult
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(use-package consult
-;  :init
-;  :config
-;  :bind
-;  (
-;   )
-;  )
+(use-package consult
+ :init
+ :config
+ :bind
+ (
+  )
+ )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; popup-kill-ring
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

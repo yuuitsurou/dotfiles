@@ -162,7 +162,7 @@
 (use-package migemo
   :config
   (setq migemo-command "cmigemo")
-  (setq migemo-options '("-q" "--emacs"))
+  (setq migemo-options '("-q" "--nonewline" "--emacs"))
   (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
@@ -263,21 +263,20 @@
 (use-package consult
  :init
  :config
+ (defun my-consult-line (&optional at-point)
+   "Consult-line uses things-at-point if set C-u prefix."
+   (interactive "P")
+   (if at-point
+       (consult-line (thing-at-point 'symbol))
+     (consult-line)))
  (consult-customize
   consult-theme
   :preview-key '(:debounce 0.2 any)
   consult-ripgrep consult-git-grep consult-grep
   consult-bookmark consult-recent-file consult-xref
-  consult--source-bookmark consult--source-recent-file 
+  consult--source-bookmark consult--source-recent-file
   :preview-key (kbd "M-.")
   )
- (consult-customize
-  consult-line
-  :add-history (seq-some #'thing-at-point '(region symbol)))
- (defalias 'consult-line-thing-at-point 'consult-line)
- (consult-customize
-  consult-line-thing-at-point
-  :initial (thing-at-point 'symbol))
  :bind (
 	("C-c h" . consult-history)
 	("C-c m" . consult-mode-command)
@@ -296,7 +295,7 @@
 	("M-g I" . consult-imenu-multi)
 	("M-s d" . consult-find)
 	("M-s r" . consult-ripgrep)
-	("M-s l" . consult-line)
+	("M-s l" . my-consult-line)
 	("M-s L" . consult-line-multi)
 	("M-s m" . consult-multi-occur)
 	("M-s k" . consult-keep-lines)
@@ -308,19 +307,49 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package orderless
   :ensure t
+  :init
   :custom
-  (completion-styles '(orderless))
+  (completion-styles '(orderless basic))
+  ;; (defun orderless-migemo (component)
+  ;;   "Match COMPONENT as `migemo'."
+  ;;    (let ((pattern (migemo-get-pattern component)))
+  ;;      (condition-case nil
+  ;;          (progn (string-match-p pattern "") pattern)
+  ;;        (invalid-regexp nil))))
+  
+  ;; (orderless-define-completion-style orderless-default-style
+  ;;   (orderless-matching-styles '(orderless-literal
+  ;;                                orderless-regexp)))
+
+  ;; (orderless-define-completion-style orderless-migemo-style
+  ;;   (orderless-matching-styles '(orderless-literal
+  ;;                                orderless-regexp
+  ;;                                orderless-migemo)))
+  ;; (completion-category-overrides
+  ;;       '((command (styles orderless-default-style))
+  ;;         (file (styles orderless-migemo-style))
+  ;;         (buffer (styles orderless-migemo-style))
+  ;;         (symbol (styles orderless-default-style))
+  ;;         (consult-location (styles orderless-migemo-style)) ;;category `consult-location' は `consult-line' などに使われる
+  ;;         (consult-multi (styles orderless-migemo-style)) ;;category `consult-multi' は `consult-buffer' などに使われる
+  ;;         (org-roam-node (styles orderless-migemo-style)) ;;category `org-roam-node' は `org-roam-node-find' で使われる
+  ;;         (unicode-name (styles orderless-migemo-style))
+  ;;         (variable (styles orderless-default-style))))
   )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; marginalia
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package marginalia
+  :ensure t
   :bind (("M-A" . marginalia-cycle)
 	 :map minibuffer-local-map
 	 ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode)
   (savehist-mode)
+  :config
+  ;; (add-to-list 'marginalia-prompt-categories
+  ;; 	       '("\\<File\\>" . file))
   )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; embark

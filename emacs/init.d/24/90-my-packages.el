@@ -300,7 +300,7 @@
 	("M-s m" . consult-multi-occur)
 	("M-s k" . consult-keep-lines)
 	("M-s u" . consult-focus-lines)
-  )
+	)
  )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; orderless
@@ -310,31 +310,31 @@
   :init
   :custom
   (completion-styles '(orderless basic))
-  ;; (defun orderless-migemo (component)
-  ;;   "Match COMPONENT as `migemo'."
-  ;;    (let ((pattern (migemo-get-pattern component)))
-  ;;      (condition-case nil
-  ;;          (progn (string-match-p pattern "") pattern)
-  ;;        (invalid-regexp nil))))
-  
-  ;; (orderless-define-completion-style orderless-default-style
-  ;;   (orderless-matching-styles '(orderless-literal
-  ;;                                orderless-regexp)))
+  :config
+  (defun orderless-migemo (component)
+    (let ((pattern (migemo-get-pattern component)))
+      (condition-case nil
+          (progn (string-match-p pattern "") pattern)
+        (invalid-regexp nil))))
 
-  ;; (orderless-define-completion-style orderless-migemo-style
-  ;;   (orderless-matching-styles '(orderless-literal
-  ;;                                orderless-regexp
-  ;;                                orderless-migemo)))
-  ;; (completion-category-overrides
-  ;;       '((command (styles orderless-default-style))
-  ;;         (file (styles orderless-migemo-style))
-  ;;         (buffer (styles orderless-migemo-style))
-  ;;         (symbol (styles orderless-default-style))
-  ;;         (consult-location (styles orderless-migemo-style)) ;;category `consult-location' は `consult-line' などに使われる
-  ;;         (consult-multi (styles orderless-migemo-style)) ;;category `consult-multi' は `consult-buffer' などに使われる
-  ;;         (org-roam-node (styles orderless-migemo-style)) ;;category `org-roam-node' は `org-roam-node-find' で使われる
-  ;;         (unicode-name (styles orderless-migemo-style))
-  ;;         (variable (styles orderless-default-style))))
+  (orderless-define-completion-style orderless-default-style
+    (orderless-matching-styles '(orderless-literal
+                                 orderless-regexp)))
+
+  (orderless-define-completion-style orderless-migemo-style
+    (orderless-matching-styles '(orderless-literal
+                                 orderless-regexp
+                                 orderless-migemo)))
+
+  (setq completion-category-overrides
+        '((command (styles orderless-default-style))
+          (file (styles orderless-migemo-style))
+          (buffer (styles orderless-migemo-style))
+          (symbol (styles orderless-default-style))
+          (consult-location (styles orderless-migemo-style)) ; category `consult-location' は `consult-line' などに使われる
+          (consult-multi (styles orderless-migemo-style)) ; category `consult-multi' は `consult-buffer' などに使われる
+          (unicode-name (styles orderless-migemo-style))
+          (variable (styles orderless-default-style))))
   )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; marginalia

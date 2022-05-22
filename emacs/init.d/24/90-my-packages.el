@@ -723,4 +723,5 @@
 ;;   (setq neo-show-hidden-files t)    ;; 隠しファイルをデフォルトで表示
 ;; ;;  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 ;;   )
-;;; 90-my-packages_win.el end here
+
+;;; 90-my-packages.el ends here

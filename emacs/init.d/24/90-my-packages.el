@@ -70,7 +70,24 @@
 
 ;; ;; 単語登録／単語削除のたびに個人辞書を保存する
 (setq skk-save-jisyo-instantly t)
-(define-key minibuffer-local-map (kbd "C-j") 'skk-kakutei)
+;(define-key minibuffer-local-map (kbd "C-j") 'skk-kakutei)
+;; ■モードのまま C-j を有効とする
+;(defun skk-C-j-key (arg)
+;  (interactive "P")
+;  (let ((enable-modes '(lisp-interaction-mode ; eval-print-last-sexp
+;			emacs-lisp-mode	      ; newline-and-indent
+;			;; and more.
+;			)))
+;    (cond
+;     ((and (null (skk-in-minibuffer-p))
+;	   (null skk-henkan-mode)
+;	   (member major-mode enable-modes))
+;      (skk-emulate-original-map arg))
+;     (t
+;      (skk-kakutei arg)))))
+
+;(add-to-list 'skk-rom-kana-rule-list
+;	     '(skk-kakutei-key nil skk-C-j-key))
 ;; (use-package mozc
 ;;   :config
 ;;   (setq default-input-method "japanese-mozc")
@@ -281,10 +298,14 @@
 	("C-c h" . consult-history)
 	("C-c m" . consult-mode-command)
 	("C-c k" . consult-kmacro)
+	("C-x M-:" . consult-complex-command)
 	("C-x b" . consult-buffer)
 	("C-x 4 b" . consult-buffer-other-window)
 	("C-x 5 b" . consult-buffer-other-frame)
 	("C-x r b" . consult-bookmark)
+	("M-#" . consult-register-load)
+	("M-'" . consult-register-store)
+	("C-M-#" . consult-register)
 	("<help> a" . consult-apropos)
 	("M-g g" . consult-goto-line)
 	("M-g M-g" . consult-goto-line)
@@ -294,12 +315,23 @@
 	("M-g i" . consult-imenu)
 	("M-g I" . consult-imenu-multi)
 	("M-s d" . consult-find)
+	("M-s D" . consult-locate)
+	("M-s g" . consult-grep)
 	("M-s r" . consult-ripgrep)
 	("M-s l" . my-consult-line)
 	("M-s L" . consult-line-multi)
 	("M-s m" . consult-multi-occur)
 	("M-s k" . consult-keep-lines)
 	("M-s u" . consult-focus-lines)
+	("M-s e" . consult-isearch-history)
+	:map isearch-mode-map
+	("M-e" . consult-isearch-history)
+	("M-s e" . consult-isearch-history)
+	("M-s l" . consult-line)
+	("M-s L" . consult-line-multi)
+	:map minibuffer-local-map
+	("M-s" . consult-history)
+	("M-r" . consult-history)
 	)
  )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

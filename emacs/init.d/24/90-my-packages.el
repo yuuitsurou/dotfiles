@@ -286,7 +286,7 @@
    (if at-point
        (consult-line (thing-at-point 'symbol))
      (consult-line)))
- (consult-customize
+(consult-customize
   consult-theme
   :preview-key '(:debounce 0.2 any)
   consult-ripgrep consult-git-grep consult-grep
@@ -333,7 +333,19 @@
 	("M-s" . consult-history)
 	("M-r" . consult-history)
 	)
+  ;; Enable automatic preview at point in the *Completions* buffer.
+  :hook (completion-list-mode consult-preview-at-point-mode)
  )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; consult-dir
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package consult-dir
+  :ensure t
+  :bind (("C-x C-d" . consult-dir)
+	 :map vertico-map
+	 ("C-x C-d" . consult-dir)
+	 ("M-d j" . consult-dir-jump-file)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; orderless
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

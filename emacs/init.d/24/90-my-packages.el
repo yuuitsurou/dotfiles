@@ -300,6 +300,7 @@
 	("M-#" . consult-register-load)
 	("M-'" . consult-register-store)
 	("C-M-#" . consult-register)
+	("M-y" . consult-yank-pop)
 	("<help> a" . consult-apropos)
 	("M-g g" . consult-goto-line)
 	("M-g M-g" . consult-goto-line)
@@ -411,7 +412,7 @@
 (use-package pos-tip)
 (use-package popup-kill-ring
   :config
-  (global-set-key "\M-y" 'popup-kill-ring)
+  (global-set-key "\M-Y" 'popup-kill-ring)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -280,12 +280,6 @@
 (use-package consult
  :init
  :config
- (defun my-consult-line (&optional at-point)
-   "Consult-line uses things-at-point if set C-u prefix."
-   (interactive "P")
-   (if at-point
-       (consult-line (thing-at-point 'symbol))
-     (consult-line)))
 (consult-customize
   consult-theme
   :preview-key '(:debounce 0.2 any)
@@ -318,7 +312,7 @@
 	("M-s D" . consult-locate)
 	("M-s g" . consult-grep)
 	("M-s r" . consult-ripgrep)
-	("M-s l" . my-consult-line)
+	("M-s l" . consult-line)
 	("M-s L" . consult-line-multi)
 	("M-s m" . consult-multi-occur)
 	("M-s k" . consult-keep-lines)

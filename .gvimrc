@@ -44,6 +44,7 @@ endif
 "---------------------------------------------------------------------------
 " Bram氏の提供する設定例をインクルード (別ファイル:vimrc_example.vim)。これ
 " 以前にg:no_gvimrc_exampleに非0な値を設定しておけばインクルードしない。
+let g:no_gvimrc_example=1
 if !exists('g:no_gvimrc_example') || g:no_gvimrc_example == 0
   source $VIMRUNTIME/gvimrc_example.vim
 endif
@@ -78,7 +79,7 @@ set lines=30
 " コマンドラインの高さ(GUI使用時)
 set cmdheight=2
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
-colorscheme desert " (GUI使用時)
+"colorscheme desert " (GUI使用時)
 "colorscheme material-theme " (GUI使用時)
 "colorscheme nefertiti
 colorscheme nord
@@ -90,7 +91,7 @@ colorscheme nord
 "
 if has('multi_byte_ime') || has('xim')
   " IME ON時のカーソルの色を設定(設定例:紫)
-  highlight CursorIM guibg=Purple guifg=NONE
+  "highlight CursorIM guibg=Purple guifg=NONE
   " 挿入モード・検索モードでのデフォルトのIME状態設定
   set iminsert=0 imsearch=0
   if has('xim') && has('GUI_GTK')

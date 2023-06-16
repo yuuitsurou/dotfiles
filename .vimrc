@@ -250,6 +250,8 @@ if dein#load_state('/home/ymine/.vim.d/dein')
 "call dein#add('Shougo/unite.vim')
 "call dein#add('Shougo/neomru.vim')
 call dein#add('vim-scripts/Zenburn')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 if ((has('nvim') || has('timers')) && has('python3')) !=# ''
 	call dein#add('Shougo/deoplete.nvim')
 	call dein#add('Shougo/denite.nvim')
@@ -284,6 +286,9 @@ endif
 "if dein#tap('deoplete.nvim')
 "	let g:deoplete#enable_at_startup = 1
 "endif
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'molokai'
 
 nmap <silent> ,f :<C-u>Denite file<CR>
 nmap <silent> ,F :<C-u>Denite file/rec<CR>

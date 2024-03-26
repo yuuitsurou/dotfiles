@@ -286,7 +286,8 @@
   consult-ripgrep consult-git-grep consult-grep
   consult-bookmark consult-recent-file consult-xref
   consult--source-bookmark consult--source-recent-file
-  :preview-key (kbd "M-.")
+  :preview-key '(:debounce 0.4 any)
+  ;;:preview-key (kbd "M-.")
   )
  :bind (
 	("C-c h" . consult-history)
@@ -316,7 +317,7 @@
 	("M-s r" . consult-ripgrep)
 	("M-s l" . consult-line)
 	("M-s L" . consult-line-multi)
-	("M-s m" . consult-multi-occur)
+	("M-s m" . multi-occur)
 	("M-s k" . consult-keep-lines)
 	("M-s u" . consult-focus-lines)
 	("M-s e" . consult-isearch-history)

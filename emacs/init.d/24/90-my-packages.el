@@ -1,3 +1,6 @@
+;;; ddskk --- Summery
+;;; Commentary:
+;;; Code:
 (straight-use-package 'ddskk)
 (setq skk-server-host "localhost"
 	  skk-server-portnum 1178
@@ -88,6 +91,11 @@
 
 ;(add-to-list 'skk-rom-kana-rule-list
 ;	     '(skk-kakutei-key nil skk-C-j-key))
+(require 'skk-tankan)
+(add-to-list 'skk-search-prog-list
+             '(skk-tankan-search 'skk-search-jisyo-file
+                                 skk-large-jisyo 10000))
+
 ;; (use-package mozc
 ;;   :config
 ;;   (setq default-input-method "japanese-mozc")

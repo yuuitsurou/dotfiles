@@ -82,7 +82,8 @@ set cmdheight=2
 "colorscheme desert " (GUI使用時)
 "colorscheme material-theme " (GUI使用時)
 "colorscheme nefertiti
-colorscheme nord
+"colorscheme nord
+colorscheme zenburn
 "set t_Co=256
 "set background=dark
 

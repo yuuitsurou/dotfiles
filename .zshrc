@@ -93,4 +93,4 @@ setopt no_flow_control
 
 export TERM=xterm-256color
 
-. "$HOME/.local/bin/env"
+. "$HOME/.local/share/../bin/env"

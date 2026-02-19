@@ -11,7 +11,10 @@
 ;(add-to-list 'org-export-backends 'md)
 ;(setq org-hide-leading-stars t)
 (setq org-directory "~/org")
-(setq org-agenda-files (list org-directory))
+;(setq org-agenda-files (list org-directory))
+(setq org-agenda-files '("~/org/todo.org"
+			 "~/org/list.org"
+			 "~/org/work.org"))
 (setq org-default-notes-file "notes.org")
 
 ;; TODO

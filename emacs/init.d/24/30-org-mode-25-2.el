@@ -13,8 +13,7 @@
 (setq org-directory "~/org")
 ;(setq org-agenda-files (list org-directory))
 (setq org-agenda-files '("~/org/todo.org"
-			 "~/org/list.org"
-			 "~/org/work.org"))
+			 "~/org/todo2.org"))
 (setq org-default-notes-file "notes.org")
 
 ;; TODO
